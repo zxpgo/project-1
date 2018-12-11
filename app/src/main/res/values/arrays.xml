@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- These are the options displayed in the gender drop-down Spinner -->
+    <string-array name="array_kind1_options">
+        <item>@string/cpu</item>
+        <item>@string/gt</item>
+        <item>@string/xk</item>
+    </string-array>
+
+    <!-- These are the options displayed in the gender drop-down Spinner -->
+    <string-array name="array_kind2_options">
+        <item>@string/cpu</item>
+        <item>@string/gt</item>
+        <item>@string/xk</item>
+    </string-array>
+
+
+    <!-- These are the options displayed in the gender drop-down Spinner -->
+    <string-array name="array_kind3_options">
+        <item>@string/cpu</item>
+        <item>@string/gt</item>
+        <item>@string/xk</item>
+    </string-array>
+
+
+</resources>

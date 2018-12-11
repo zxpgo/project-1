@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">电子通讯</string>
+
+    <string name="cpu">CPU</string>
+
+    <string name="xk">显卡</string>
+
+    <string name="gt">固态</string>
+</resources>
