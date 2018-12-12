@@ -8,18 +8,29 @@
     </string-array>
 
     <!-- These are the options displayed in the gender drop-down Spinner -->
+
     <string-array name="array_kind2_options">
-        <item>@string/cpu</item>
-        <item>@string/gt</item>
-        <item>@string/xk</item>
+        <item>aa, bb, cc</item>
+        <item>dd, ee, ff</item>
+        <item>gg, hh, ii</item>
     </string-array>
 
 
     <!-- These are the options displayed in the gender drop-down Spinner -->
     <string-array name="array_kind3_options">
-        <item>@string/cpu</item>
-        <item>@string/gt</item>
-        <item>@string/xk</item>
+
+        <item>1,2, 3</item>
+        <item>11, 22, 33</item>
+        <item>1,2 3</item>
+
+        <item>4, 5, 6</item>
+        <item>44, 55, 66</item>
+        <item>1,2, 3</item>
+
+        <item>6, 7, 8</item>
+        <item>66, 77, 88</item>
+        <item>1,2, 3</item>
+
     </string-array>
 
 
