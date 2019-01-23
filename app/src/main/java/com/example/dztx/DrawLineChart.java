@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class DrawLineChart extends View {
 
@@ -47,17 +49,22 @@ public class DrawLineChart extends View {
     /**需要绘制的高度*/
     private float mNeedDrawHeight;
     /**数据值*/
-    private float[] value=new float[]{-5.55f,-6.899f,-4.55f,-0.045f,21.511f,22.221f,22.330f,21.448f,21.955f,23.6612f,22,22.18883f,21.47995f};
+    private float[] value=new float[]{2000,2100,2230,3000,1900,2600,2008};
+
+    private String[] xvalue = new String[]{"18-10","18-11","18-12","19-01","19-02","19-03","19-04"};
     /**图表的最大值*/
-    private float maxVlaue=27.55f;
+    private float maxVlaue= 3000;
+
     /**图表的最小值*/
-    private float minValue=-19.12f;
+    private float minValue= 1900;
+
+
     /**要计算的总值*/
     private float calculateValue;
     /**框线平均值*/
     private float averageValue;
     /**横线数量*/
-    private float numberLine=10;
+    private float numberLine= value.length;
     /**边框线颜色*/
     private int mBorderLineColor=Color.BLACK;
     /**边框线的宽度*/
@@ -65,7 +72,7 @@ public class DrawLineChart extends View {
     /**边框文本颜色*/
     private int mBorderTextColor=Color.GRAY;
     /**边框文本大小*/
-    private float mBorderTextSize=20;
+    private float mBorderTextSize=30;
     /**边框横线颜色*/
     private int mBorderTransverseLineColor=Color.GRAY;
     /**边框横线宽度*/
@@ -77,7 +84,7 @@ public class DrawLineChart extends View {
     /**折线宽度*/
     private  float mBrokenLineWidth=2;
     /**折线文本大小*/
-    private  float mBrokenLineTextSize=15;
+    private  float mBrokenLineTextSize=25;
     /**折线圆的颜色*/
     private int mCircleColor=Color.BLUE;
     /**计算后的x，y坐标*/
@@ -206,8 +213,8 @@ public class DrawLineChart extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        mViewHeight = getMeasuredHeight();
-        mViewWidth = getMeasuredWidth();
+        mViewHeight = getMeasuredHeight()-500;
+        mViewWidth = getMeasuredWidth()-50;
 
         /**计算总值*/
         calculateValue=maxVlaue-minValue;
@@ -373,12 +380,13 @@ public class DrawLineChart extends View {
 
         /**竖线*/
         for (int i = 1; i < mPoints.length; i++) {
-            //canvas.drawLine(mPoints[i].x,mBrok enLineTop,mPoints[i].x,mBrokenLineTop+mNeedDrawHeight,mBorderLinePaint);
+            //canvas.drawLine(mPoints[i].x, mBrokenLineTop, mPoints[i].x,mBrokenLineTop+mNeedDrawHeight, mBorderLinePaint);
+           canvas.drawText(xvalue[i]+ " ", mPoints[i].x,1000,mTextPaint );
         }
     }
     /**保留2位小数*/
     private String  floatKeepTwoDecimalPlaces(float f){
-        DecimalFormat decimalFormat=new DecimalFormat("0.00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
+        DecimalFormat decimalFormat=new DecimalFormat("0");//构造方法的字符格式这里如果小数不足2位,会以0补足.
         String p=decimalFormat.format(f);
         return p;
     }
@@ -400,5 +408,10 @@ public class DrawLineChart extends View {
             points[i] = point;
         }
         return points;
+    }
+
+    public static int MAX(int[] arr) {
+        Arrays.sort(arr);
+        return arr[arr.length-1];
     }
 }

@@ -1,6 +1,7 @@
 package com.example.dztx;
 
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Spinner;
 
 import com.example.dztx.DrawLineChart;
 
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner m1KindsSpinner;
     private Spinner m2KindsSpinner;
     private Spinner m3KindsSpinner;
+
 
     private int index;
     ArrayAdapter<String> kind1Adapter, kind2Adapter, kind3Adapter;
@@ -31,11 +34,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DataAsyncTask task = new DataAsyncTask();
+        task.execute("http://111.230.111.81/data/cpu/");
+
         m1KindsSpinner = (Spinner) findViewById(R.id.spinner_kind1);
         m2KindsSpinner = (Spinner) findViewById(R.id.spinner_kind2);
         m3KindsSpinner = (Spinner) findViewById(R.id.spinner_kind3);
 
         setupSpinner();
+    }
+
+    private class DataAsyncTask extends AsyncTask<String, Void, String>{
+        @Override
+        protected String doInBackground(String... urls){
+            Log.e("result","CPU ---------------------------------");
+            String result = QueryUtils.fetchData(urls[0]);
+            Log.e("result","CPU " + result);
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String data) {
+            // 清除之前地震数据的适配器
+
+            }
     }
 
     /**
